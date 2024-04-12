@@ -1,5 +1,5 @@
 from FlaskCarPricePredictorMVC.config.connection_database import get_connection
-from FlaskCarPricePredictorMVC.model.usuario import Usuario
+from FlaskCarPricePredictorMVC.model.user import Usuario
 
 
 def validar_cadastro(nome_recebido, sobrenome_recebido, email_recebido, senha_recebida1, senha_recebida2):

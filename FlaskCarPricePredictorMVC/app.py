@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, jsonify, url_for, redirect
 from FlaskCarPricePredictorMVC.utils.pesquisas_db import retornar_anos_modelo, retornar_modelos
 from FlaskCarPricePredictorMVC.utils.plot_graph import plot_unitario
 from FlaskCarPricePredictorMVC.math_model.variacao_media import variacao_media
-from FlaskCarPricePredictorMVC.model.usuario import Usuario
+from FlaskCarPricePredictorMVC.model.user import Usuario
 from FlaskCarPricePredictorMVC.validations.validacao_login import validar_login
 from FlaskCarPricePredictorMVC.validations.validacao_cadastro import validar_cadastro
 
@@ -44,7 +44,7 @@ def processar_cadastro():
     if Usuario.usuario_logado:
         return redirect(url_for('index'))
     else:
-        return render_template('cadastro.html', erro_cadastro=erro_cadastro)
+        return render_template('register.html', erro_cadastro=erro_cadastro)
 
 
 @app.route('/')
@@ -54,7 +54,7 @@ def login():
 
 @app.route('/cadastro')
 def cadastro():
-    return render_template('cadastro.html')
+    return render_template('register.html')
 
 
 @app.route('/analiseUnitaria')
@@ -64,7 +64,7 @@ def carregar_analise_unitaria():
         modelos_json = json.loads(modelos_json)
         modelos = [v['modelo'] for v in modelos_json.values()]
         # modelos = modelos_json['modelo']
-        return render_template('analiseUnitaria.html', modelos=modelos)
+        return render_template('unitary.html', modelos=modelos)
     return redirect(url_for('login'))
 
 
@@ -76,7 +76,7 @@ def analisar():
     print(f'marca: {marca}, modelo:{modelo}, ano_modelo:{ano_modelo}')
     image_base64, dataFrame, tendencia_porcentagem = plot_unitario(marca, modelo, ano_modelo)
     previsao, preco_final = variacao_media(dataFrame)
-    return render_template('analiseDados.html',
+    return render_template('data_display.html',
                            image_base64=image_base64,
                            previsao=previsao,
                            preco_final=preco_final,
@@ -86,7 +86,7 @@ def analisar():
 @app.route('/analiseComparativa')
 def carregar_analise_comparativa():
     if Usuario.usuario_logado:
-        return render_template('analiseComparativa.html')
+        return render_template('comparative.html')
     return redirect(url_for('login'))
 
 
