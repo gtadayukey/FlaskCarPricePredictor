@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CPC - Analise Comparativa</title>
+    <link rel="stylesheet" href="static/bootstrap.css">
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Formulário de Carros</h1>
+
+                <!-- Um único formulário para ambos os carros -->
+                <form action="/submit-form" method="post">
+                    <!-- Seção para o primeiro carro -->
+                    <h2>Carro 1</h2>
+                    <div class="form-group">
+                        <label for="carModel1">Modelo do Carro 1:</label>
+                        <select name="carModel1" id="carModel1" class="form-control">
+                            <!-- Opções de modelo de carro -->
+                            <option value="modelo1">Modelo 1</option>
+                            <option value="modelo2">Modelo 2</option>
+                            <!-- Adicione mais opções conforme necessário -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carName1">Nome do Carro 1:</label>
+                        <select name="carName1" id="carName1" class="form-control">
+                            <!-- Opções de nome de carro -->
+                            <option value="nome1">Nome 1</option>
+                            <option value="nome2">Nome 2</option>
+                            <!-- Adicione mais opções conforme necessário -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carYear1">Ano do Modelo 1:</label>
+                        <select name="carYear1" id="carYear1" class="form-control">
+                            <!-- Opções de ano do modelo -->
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <!-- Adicione mais opções conforme necessário -->
+                        </select>
+                    </div>
+
+                    <!-- Espaçamento entre os carros -->
+                    <hr>
+
+                    <!-- Seção para o segundo carro -->
+                    <h2>Carro 2</h2>
+                    <div class="form-group">
+                        <label for="carModel2">Modelo do Carro 2:</label>
+                        <select name="carModel2" id="carModel2" class="form-control">
+                            <!-- Opções de modelo de carro -->
+                            <option value="modelo1">Modelo 1</option>
+                            <option value="modelo2">Modelo 2</option>
+                            <!-- Adicione mais opções conforme necessário -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carName2">Nome do Carro 2:</label>
+                        <select name="carName2" id="carName2" class="form-control">
+                            <!-- Opções de nome de carro -->
+                            <option value="nome1">Nome 1</option>
+                            <option value="nome2">Nome 2</option>
+                            <!-- Adicione mais opções conforme necessário -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carYear2">Ano do Modelo 2:</label>
+                        <select name="carYear2" id="carYear2" class="form-control">
+                            <!-- Opções de ano do modelo -->
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <!-- Adicione mais opções conforme necessário -->
+                        </select>
+                    </div>
+
+                    <!-- Botão de envio para ambos os carros -->
+                    <input type="submit" value="Enviar" class="btn btn-primary">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

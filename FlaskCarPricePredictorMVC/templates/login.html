@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>CPC - Login</title>
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#4169E1;">
+          <div class="container-fluid">
+              <a class="navbar-brand" style="color:black;" href="">
+                  <img src="https://cdn-icons-png.flaticon.com/128/1782/1782079.png" alt="cpc-tool-logo" width="13%">
+                  CPC Tool
+              </a>
+
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <ul class="nav justify-content-end">
+                  <li class="nav-item">
+                      <a class="nav-link" aria-current="page">Support us</a>
+                  </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link">Help</a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+      <div class="text-center" style="margin-top:240px;">
+          <form action="/processar_login" method="POST" class="mx-auto" style="max-width:480px;">
+              <h1 class="mt-4 mb-5" style="font-size:70px;">Login</h1>
+
+              <label for="email_login" class="sr-only">Email Address</label>
+              <input type="email" id="email_login" name="email_login" class="form-control" maxlength="50" placeholder="nome@exemplo.com" style="border-bottom-left-radius:0px;border-bottom-right-radius:0px;" required autofocus>
+
+              <label for="senha_login" class="sr-only">Password</label>
+              <input type="password" id="senha_login" name="senha_login" class="form-control" minlength="8" maxlength="20" placeholder="senha" style="border-top-left-radius:0px;border-top-right-radius:0px;border-top:0px;" required>
+
+              <label style="color:red;" id="report_erro_login">{{erro_login}}</label>
+
+              <p>Não possui uma conta? <a href="/cadastro">Criar conta</a></p>
+
+              <button type="submit" class="btn btn-lg btn-primary btn-block mt-3">ENTRAR</button>
+          </form>
+      </div>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

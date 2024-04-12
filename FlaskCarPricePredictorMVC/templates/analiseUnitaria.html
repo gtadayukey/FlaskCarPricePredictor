@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário de Carros</title>
+    <link rel="stylesheet" href="static/bootstrap.css">
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Formulário de Carros</h2>
+                <form action="/analisar" method="post">
+                    <div class="form-group">
+                        <label for="marca">Modelo do Carro:</label>
+                        <select name="marca" id="marca" class="form-control">
+                            <!-- Opções de modelo de carro -->
+                            <option value="Fiat">Fiat</option>
+                            <!-- Adicione mais opções conforme necessário -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modelo">Modelo:</label>
+                        <select name="modelo" id="modelo" class="form-control", onchange="updateCarYearModel(this.value)">
+                            <option value=""></option>
+                            {% for modelo in modelos %}
+                            <option value="{{ modelo }}">{{ modelo }}</option>
+                            {% endfor %}
+                            <!-- Mudar para que sejam geradas dinamicamente no futuro -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ano_modelo">Ano do Modelo:</label>
+                        <select name="ano_modelo" id="ano_modelo" class="form-control">
+                            <option value=""></option>
+                        </select>
+                    </div>
+
+                    <input type="submit" value="Enviar" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="static/script.js"></script>
+</body>
+</html>

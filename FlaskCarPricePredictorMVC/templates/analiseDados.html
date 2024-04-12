@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Valor do Carro</title>
+    <link href="static/bootstrap.css" rel="stylesheet">
+    <style>
+        .container {
+            padding-top: 20px;
+        }
+        .box {
+            margin-bottom: 20px;
+        }
+        .input-style {
+            padding: .375rem .75rem;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            display: block;
+            width: 100%;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .red-text {
+            color: red;
+        }
+
+        .blue-text {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Análise de Valor do Carro</h1>
+
+        <div class="row">
+            <!-- Gráfico em Base64 -->
+            <div class="col-md-12">
+                <img src="data:image/png;base64,{{ image_base64 }}" alt="Gráfico de Análise" class="img-fluid">
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Caixa de Texto: Valor Atual -->
+            <div class="col-md-4 box">
+                <div class="form-group">
+                    <label for="valorAtual">Valor Atual do Carro</label>
+                    <span class="input-style" id="valorAtual">
+                        R$ {{ preco_final }}
+                    </span>
+                </div>
+            </div>
+
+            <!-- Caixa de Texto: Previsão do Próximo Mês -->
+            <div class="col-md-4 box">
+                <div class="form-group">
+                    <label for="previsaoValor">Previsão do Valor para o Próximo Mês</label>
+                    <span class="input-style" id="previsaoValor">
+                        R$ {{ previsao }}
+                    </span>
+                </div>
+            </div>
+
+            <!-- Caixa de Texto: Tendência de Valorização -->
+            <div class="col-md-4 box">
+                <div class="form-group">
+                    <label for="tendenciaValorizacao">Tendência de Valorização (%)</label>
+                    <span class="input-style {{ 'red-text' if tendencia_porcentagem < 0 else 'blue-text' }}" id="tendenciaValorizacao">
+                        {{ '{:.2f}'.format(tendencia_porcentagem) }}%
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
