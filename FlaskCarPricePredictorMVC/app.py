@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, jsonify, url_for, redirect
 from FlaskCarPricePredictorMVC.utils.pesquisas_db import retornar_anos_modelo, retornar_modelos
 from FlaskCarPricePredictorMVC.utils.plot_graph import plot_unitario
 from FlaskCarPricePredictorMVC.math_model.variacao_media import variacao_media
-from FlaskCarPricePredictorMVC.model.user import Usuario
+from FlaskCarPricePredictorMVC.model.user import User
 from FlaskCarPricePredictorMVC.validations.validacao_login import validar_login
 from FlaskCarPricePredictorMVC.validations.validacao_cadastro import validar_cadastro
 
