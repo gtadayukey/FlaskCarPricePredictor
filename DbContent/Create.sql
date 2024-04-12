@@ -1,30 +1,35 @@
 
 -- Create table for cars on the fipe data
-CREATE TABLE carros_fipe(
-	id SERIAL PRIMARY KEY,
-	mes_referencia VARCHAR(10) NOT NULL,
-	cod_fipe VARCHAR(10) NOT NULL,
-	marca VARCHAR(20) NOT NULL,
-	modelo VARCHAR(100) NOT NULL,
-	ano_modelo VARCHAR(20) NOT NULL,
-	autenticacao VARCHAR(20) NOT NULL,
-	dia_consulta VARCHAR(20) NOT NULL,
-	data_consulta VARCHAR(50) NOT NULL,
-	preco_medio FLOAT NOT NULL
+CREATE TABLE fipe_car(
+	car_id SERIAL PRIMARY KEY,
+	reference_month VARCHAR(10) NOT NULL,
+	fipe_code VARCHAR(10) NOT NULL,
+	brand VARCHAR(20) NOT NULL,
+	model VARCHAR(100) NOT NULL,
+	year_model VARCHAR(20) NOT NULL,
+	authentication VARCHAR(20) NOT NULL,
+	consult_day VARCHAR(20) NOT NULL,
+	consult_date VARCHAR(50) NOT NULL,
+	average_price FLOAT NOT NULL
 );
 
 -- Create table for users
-CREATE TABLE usuario(
-	cod_usuario SERIAL PRIMARY KEY,
-	nome VARCHAR(20) NOT NULL,
-	sobrenome VARCHAR(20) NOT NULL,
+CREATE TABLE users(
+	user_id SERIAL PRIMARY KEY,
+	first_name VARCHAR(20) NOT NULL,
+	last_name VARCHAR(20) NOT NULL,
+	register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create table for login
+CREATE TABLE login(
+	user_id FOREIGN KEY,
 	email VARCHAR(50) NOT NULL,
-	senha VARCHAR(20) NOT NULL,
-	data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	password VARCHAR(20) NOT NULL,
 );
 
 -- Create table for consult history
-CREATE TABLE historico_consultas (
+CREATE TABLE user_analysis_history (
     cod_historico SERIAL PRIMARY KEY,
     fipe_id INT NOT NULL,
     cod_usuario INT NOT NULL,

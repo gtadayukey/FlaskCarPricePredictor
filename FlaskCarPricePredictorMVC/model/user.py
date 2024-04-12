@@ -1,32 +1,27 @@
-import psycopg2
-from sqlalchemy import create_engine, Column, String, Integer, TIMESTAMP, MetaData
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-
-engine = create_engine('postgresql+psycopg2://postgres:12341234@postgres/flaskcarpricepredictor')
-Session = sessionmaker(bind=engine)
-Base = declarative_base()
+from sqlalchemy import ForeignKey, TIMESTAMP
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 
-class User(Base):
+class Base(DeclarativeBase):
+    pass
+
+
+class User(DeclarativeBase):
     __tablename__ = 'users'
-
-    user_id = Column("user_id", Integer, primary_key=True)
-    first_name = Column("first_name", String, nullable=False)
-    last_name = Column("last_name", String, nullable=False)
-    register_date = Column("register_date", TIMESTAMP, default=True)
-
-    def __init__(self, user_id, first_name, last_name):
-        self.user_id = user_id
-        self.first_name = first_name
-        self.last_name = last_name
+    user_id: Mapped[int] = mapped_column(primary_key=True)
+    first_name: Mapped[str] = mapped_column(nullable=False)
+    last_name: Mapped[str] = mapped_column(nullable=False)
+    register_date: Mapped[str] = mapped_column(TIMESTAMP, default=True)
 
     def __repr__(self):
-        return f"({self.user_id}) {self.first_name} {self.last_name} ({self.register_date})"
+        return f"<User username={self.first_name}"
 
 
-session = Session()
+class Login(DeclarativeBase):
+    __tablename__ = 'login'
+    user_id: Mapped[int] = mapped_column(ForeignKey('users.user_id'), nullable=False)
+    email: Mapped[str] = mapped_column(nullable=False)
+    password: Mapped[str] = mapped_column(nullable=False)
 
-user = User(12312, "Mike", "Smith")
-session.add(user)
-session.commit()
+    def __repr__(self):
+        return f"<Login email={self.email}, name={self.user_id}"
