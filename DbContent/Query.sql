@@ -1,24 +1,24 @@
 
 -- Select all the cars brand
-SELECT marca
-    FROM carros_fipe
-    GROUP BY marca;
+SELECT brand
+    FROM fipecar
+    GROUP BY brand;
 
 -- Select all models
-SELECT modelo
-    FROM carros_fipe
-    GROUP BY modelo;
+SELECT model
+    FROM fipecar
+    GROUP BY model;
 
 -- Select all the years of a model
-SELECT ano_modelo
-    FROM carros_fipe
-    WHERE modelo = '{ano_modelo}'
-    GROUP BY ano_modelo;
+SELECT year_model
+    FROM fipecar
+    WHERE model = '{year_model}'
+    GROUP BY year_model;
 
 -- Select the price of a specify car model by month
-SELECT DISTINCT c.modelo, c.mes_referencia, c.preco_medio
-    FROM carros_fipe c
-    WHERE c.marca = '{marca}'
-    AND c.modelo = '{modelo}'
-    AND c.ano_modelo = '{ano_modelo}'
-    ORDER BY mes_referencia;
+SELECT DISTINCT c.model, c.reference_month, c.average_price
+    FROM fipecar c
+    WHERE c.brand = '{brand}'
+    AND c.modelo = '{model}'
+    AND c.year_model = '{year_model}'
+    ORDER BY reference_month;
