@@ -29,7 +29,7 @@ CREATE TABLE login(
 );
 
 -- Create table for consult history
-CREATE TABLE user_analysis_history (
+CREATE TABLE search_history (
     cod_historico SERIAL PRIMARY KEY,
     fipe_id INT NOT NULL,
     cod_usuario INT NOT NULL,
