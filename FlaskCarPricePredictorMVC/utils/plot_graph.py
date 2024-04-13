@@ -4,20 +4,20 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-from FlaskCarPricePredictorMVC.math_model.linear_regression import linear_regression
-from FlaskCarPricePredictorMVC.math_model.tendencia_variacao import tendencia
+from FlaskCarPricePredictorMVC.services.math_services import linear_regression
+from FlaskCarPricePredictorMVC.services.math_services import variation_tendency
 from FlaskCarPricePredictorMVC.utils.pesquisas_db import retornar_para_plot
 
 
 def plot_unitario(marca, modelo, ano_modelo):
     dados = retornar_para_plot(marca, modelo, ano_modelo)
 
-    dataFrame = pd.DataFrame(dados, columns=['modelo', 'mes_referencia', 'preco_medio'])
+    df = pd.DataFrame(dados, columns=['modelo', 'mes_referencia', 'preco_medio'])
 
-    X = dataFrame['mes_referencia']
-    y = dataFrame['preco_medio']
+    x = df['mes_referencia']
+    y = df['preco_medio']
 
-    xreg = np.arange(len(X))
+    xreg = np.arange(len(x))
 
     # model = LinearRegression().fit(xreg.reshape(-1, 1), y)
     # print(model.coef_)
@@ -40,6 +40,6 @@ def plot_unitario(marca, modelo, ano_modelo):
     buffer.seek(0)
     image_base64 = base64.b64encode(buffer.getvalue()).decode('utf-8')
 
-    tendencia_porcentagem = tendencia(coeficiente_linear, coeficiente_angular, xreg)
+    tendencia_porcentagem = variation_tendency(coeficiente_linear, coeficiente_angular, xreg)
 
     return image_base64, dataFrame, tendencia_porcentagem

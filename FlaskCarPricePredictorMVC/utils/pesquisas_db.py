@@ -1,9 +1,9 @@
 import pandas as pd
 
-from FlaskCarPricePredictorMVC.config.connection_database import get_connection
+from FlaskCarPricePredictorMVC.data.connect import db
 
 def retornar_anos_modelo(modelo_carro):
-    connection = get_connection()
+    connection = db.connection()
     cursor = connection.cursor()
 
     query = (f"SELECT ano_modelo "
@@ -23,7 +23,7 @@ def retornar_anos_modelo(modelo_carro):
 
 
 def retornar_modelos():
-    connection = get_connection()
+    connection = db.connection()
     cursor = connection.cursor()
 
     query = (f"SELECT modelo "
@@ -43,7 +43,7 @@ def retornar_modelos():
 
 
 def retornar_para_plot(marca, modelo, ano_modelo):
-    connection = get_connection()
+    connection = db.connection()
     cursor = connection.cursor()
 
     query = (f"SELECT DISTINCT c.modelo, c.mes_referencia, c.preco_medio "
