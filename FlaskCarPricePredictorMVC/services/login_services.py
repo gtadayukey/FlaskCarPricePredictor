@@ -1,8 +1,9 @@
 from FlaskCarPricePredictorMVC.data.connect import db
 
 
-def validar_login(email_recebido, senha_recebida):
-    with db.connection() as conexao, conexao.cursor() as cursor:
-        sql = """SELECT * FROM usuario WHERE email = %s"""
-        cursor.execute(sql, (email_recebido,))
-        usuario = cursor.fetchone()
+def validate_login(email, password):
+    with db.connection() as con, con.cursor() as cursor:
+        query = """SELECT * FROM login WHERE email = %s AND password = %s"""
+        cursor.execute(query, (email, password))
+        user = cursor.fetchone()
+        return user
