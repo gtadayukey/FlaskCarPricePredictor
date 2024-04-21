@@ -1,27 +1,25 @@
 from FlaskCarPricePredictorMVC.data.connect import db
 
 
-def validar_cadastro(nome_recebido, sobrenome_recebido, email_recebido, senha_recebida1, senha_recebida2):
-    erro_cadastro = "Senhas incompatíveis !"
+def validate_register(first_name, last_name, email, first_password, second_password):
+    if first_password == second_password:
+        with db.connection() as con, con.cursor() as cursor:
+            query = """SELECT * FROM usuario WHERE email = %s"""
+            cursor.execute(query, email)
+            user = cursor.fetchone()
 
-    if senha_recebida1 == senha_recebida2:
-        with db.connection() as conexao, conexao.cursor() as cursor:
-            sql = """SELECT * FROM usuario WHERE email = %s"""
-            cursor.execute(sql, (email_recebido,))
-            usuario = cursor.fetchone()
-
-            if usuario:
-                erro_cadastro = "Ja possui uma conta !"
+            if user:
+                return "Ja possui uma conta !"
             else:
-                sql = """INSERT INTO usuario (nome, sobrenome, email, senha) VALUES (%s, %s, %s, %s)"""
+                query = """INSERT INTO usuario (nome, sobrenome, email, senha) VALUES (%s, %s, %s, %s)"""
 
-                cursor.execute(sql, (nome_recebido, sobrenome_recebido, email_recebido, senha_recebida1))
-                conexao.commit()
+                cursor.execute(query, (first_name, last_name, email, first_password, second_password))
+                con.commit()
 
-                sql = """SELECT * FROM usuario WHERE email = %s"""
-                cursor.execute(sql, (email_recebido,))
+                query = """SELECT * FROM usuario WHERE email = %s"""
+                cursor.execute(query, email)
 
-                usuario = cursor.fetchone()
+                user = cursor.fetchone()
 
-    return erro_cadastro
+                return user
 
